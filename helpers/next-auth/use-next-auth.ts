@@ -29,18 +29,13 @@ export const useNextAuth = () => {
         const {
           user: { first_name, last_name, id, email },
           access_token,
-          expires_at,
         } = session
 
         console.log('nextjs/helpers/next-auth/use-next-auth.ts > NEW RENDER')
 
-        // if (Date.now() > expires_at - 1000 * 60) await update()
-
         setUserData({ first_name, last_name, id, email })
         setAccessToken(access_token)
       }
-
-      // if (session?.expires_at && session?.expires_at < Date.now()) update()
 
       setSessionIsLoading(status === 'loading')
     }

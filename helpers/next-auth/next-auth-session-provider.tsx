@@ -32,8 +32,7 @@ export const NextAuthSessionProvider = ({
   }, [session])
 
   return (
-    <SessionProvider session={session} refetchInterval={interval}>
-      {children}
-    </SessionProvider>
+    // <SessionProvider session={session} refetchInterval={interval}>
+    <SessionProvider session={session}>{children}</SessionProvider>
   )
 }
