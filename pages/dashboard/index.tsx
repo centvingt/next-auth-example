@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { signOut } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 import { useNextAuth } from '@/helpers/next-auth/use-next-auth'
+import { GetServerSidePropsContext } from 'next'
 
 const DashboardPage: FC = () => {
   const { sessionIsLoading, userData } = useNextAuth()
@@ -17,6 +18,18 @@ const DashboardPage: FC = () => {
   ) : (
     <h1>Error</h1>
   )
+}
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext,
+) => {
+  const session = await getSession(context)
+
+  return {
+    props: {
+      session,
+    },
+  }
 }
 
 export default DashboardPage
