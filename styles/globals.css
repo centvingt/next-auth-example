@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+} */
+
+@layer base {
+  table {
+    @apply text-xs;
+  }
+  .cell-bellow {
+    @apply bg-green-300;
+  }
+  .cell-over {
+    @apply bg-red-300;
+  }
+  .cell-empty {
+    @apply border-none;
+  }
+  .cell-title {
+    @apply bg-ship-white-300 pl-1 text-ship-blue-500;
+  }
+  .cell-generated {
+    @apply bg-ship-black-200 pl-1;
+  }
+  label {
+    @apply capitalize;
+  }
+
+  th,
+  td {
+    padding: 0;
+    height: 20px;
+    @apply !min-w-[50px]  !border-ship-blue-500 text-left;
+    border: 1px solid;
+  }
+  th input,
+  th select,
+  td input,
+  td select {
+    height: 100%;
+  }
+}
+@layer utilities {
+  .stack-item {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 0.2s;
+  }
+  .animation-delay-400 {
+    animation-delay: 0.4s;
+  }
+}
+
+.circle {
+  @apply mx-1 my-6 h-4 w-4 rounded-full bg-gray-500;
+}
+
+html {
+  background-color: #f4f7fe;
+}
+
+th,
+td {
+  min-width: 40px;
+}
+table {
+  width: 100%;
+  empty-cells: show;
+}
+input,
+textarea {
+  @apply w-full pl-1;
+}
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.required-field {
+  @apply border-ship-blue-600;
+}
+.required-asterix {
+  @apply text-xl text-red-600;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  @apply !outline-ship-blue-600;
+}
